@@ -2,6 +2,8 @@ package TestCases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,16 +13,21 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.utils.ReadingdetafromExcelfile;
+
 
 public class Formfilling {
 
 	ChromeDriver chromeDriver = null;
-
+	ArrayList<String> arrayList;
 	@BeforeClass
 	public void beforeClass()
 	{
 		chromeDriver = new ChromeDriver();
 		chromeDriver.get("https://testautomationpractice.blogspot.com");
+		ReadingdetafromExcelfile excelfile = new ReadingdetafromExcelfile();
+	   arrayList = excelfile.readExcel("C:/Users/GOPAL/OneDrive/Desktop/sample.xlsx");
+
 		
 		
 	}
@@ -39,7 +46,7 @@ public class Formfilling {
 	@Test
 	public void verifyingName() {
 
-		chromeDriver.findElement(By.id("name")).sendKeys("fdsfvfgfgfgdg");
+		chromeDriver.findElement(By.id("name")).sendKeys(arrayList.get(0));
 		chromeDriver.findElement(By.id("phone")).sendKeys("9999999999");
 		chromeDriver.findElement(By.id("email")).sendKeys("arj@gmail.com");
 		chromeDriver.findElement(By.id("textarea")).sendKeys("fdsfvfgfgfgdg");
