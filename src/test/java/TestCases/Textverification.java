@@ -1,8 +1,12 @@
 package TestCases;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -28,6 +32,8 @@ public class Textverification {
 	System.out.println(actualText);
 	String expectedText = "Drag and Drop";
 
+	WebDriverWait wait = new WebDriverWait(chromeDriver , Duration.ofSeconds(10));
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[normalize-space()='Drag and Drop']")));
 	if (actualText.equals(expectedText)) {
 	    System.out.println("Text matches");
 	} else {

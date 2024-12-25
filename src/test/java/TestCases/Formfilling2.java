@@ -3,8 +3,12 @@ package TestCases;
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -14,12 +18,21 @@ import org.testng.annotations.Test;
 
 public class Formfilling2 {
 
-	ChromeDriver chromeDriver = null;
+	WebDriver chromeDriver = null;
 
 	@BeforeClass
 	public void beforeClass()
 	{
-		chromeDriver = new ChromeDriver();
+		int i=1;
+		//chromeDriver = new ChromeDriver();
+		if(i==1)
+			chromeDriver = new ChromeDriver();
+			else if(i==2)
+				chromeDriver = new FirefoxDriver();
+			else if(i==3)
+				chromeDriver = new InternetExplorerDriver();
+			else
+				chromeDriver = new SafariDriver();
 		chromeDriver.get("https://testautomationpractice.blogspot.com");
 		
 		
